@@ -12,9 +12,11 @@ const elements = {
 
 elements.btnStart.addEventListener('click', handlerStart);
 elements.btnStop.addEventListener('click', handlerStop);
+elements.btnStop.disabled = true;
 
 function handlerStart() {
   elements.btnStart.disabled = true;
+  elements.btnStop.disabled = false;
   return (id = setInterval(() => {
     elements.body.style.backgroundColor = getRandomHexColor();
   }, 1000));
@@ -22,5 +24,6 @@ function handlerStart() {
 
 function handlerStop() {
   elements.btnStart.disabled = false;
+  elements.btnStop.disabled = true;
   clearInterval(id);
 }
