@@ -13,6 +13,7 @@ const elements = {
 elements.btnStart.addEventListener('click', handlerStart);
 elements.btnStop.addEventListener('click', handlerStop);
 elements.btnStop.disabled = true;
+let id;
 
 function handlerStart() {
   elements.btnStart.disabled = true;
