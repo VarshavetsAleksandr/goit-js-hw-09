@@ -12,7 +12,7 @@ const elements = {
 };
 
 elements.button.disabled = true;
-const currentDate = new Date().getTime();
+let currentDate = new Date().getTime();
 
 const options = {
   enableTime: true,
@@ -25,21 +25,23 @@ const options = {
       Notiflix.Notify.failure('Please choose a date in the future');
     } else {
       elements.button.disabled = false;
+      elements.input.disabled = true;
       elements.button.addEventListener('click', handlerClick);
     }
   },
 };
 
 const calendars = flatpickr(elements.input, options);
-let id;
 
 function formatTime(value) {
   return value.toString().padStart(2, '0');
 }
 
 function handlerClick() {
-  const selectDate = new Date(elements.input.value).getTime();
+  elements.button.disabled = true;
+  let selectDate = new Date(elements.input.value).getTime();
   let ms = selectDate - currentDate;
+  let id;
   if (ms > 0) {
     id = setInterval(() => {
       ms -= 1000;
